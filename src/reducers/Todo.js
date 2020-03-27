@@ -1,5 +1,5 @@
-
-const Todo=(state=[],action)=>{
+const INITIAL_DATA=[]
+const Todo=(state=INITIAL_DATA,action)=>{
     switch(action.type)
     {
         case 'ADD_TODO':

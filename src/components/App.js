@@ -10,7 +10,10 @@ class App extends React.Component{
    render(){
        return(
         
-           <ADDTODO/>
+           <div>
+               <ADDTODO/>
+               <TABLE/>
+           </div>
            
 
            
