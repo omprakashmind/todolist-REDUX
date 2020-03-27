@@ -1,52 +1,62 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {addtodo} from '../actions/index'
+import {bindActionCreators} from 'redux'
+
 
 
 class ADDTODO extends React.Component{
-    constructor(props)
-    {
-        super(props)
-        this.state={
-            message:''
-        }
-    }
+      constructor(props)
+      {
+          super(props)
+          this.state={
+              todotext:''
+          }
+      }
+
+      onChangeValue=(event)=>{
+          this.setState({
+              [event.target.name]:event.target.value
+          })
+          
+      }
+
+      addValue=(event)=>{
+          this.props.addtodo(this.state.todotext)
+          this.setState({
+              todotext:''
+          })
+        
+      }
 
 
-    changeValue=(event)=>{
-        this.setState({
-            [event.target.name]:event.target.value
-        })
-    }
+    render() {
 
-
-    sendValue=(dispatch)=>{
-        dispatch(addtodo(this.state.message))
-
-
-    }
-
-    render(){
         return(
-            
             <div>
 
-
-                <h1>ADD TASK IN TO DO LIST</h1>
-
-                <input type="text" name="message" value={this.state.message} onChange={this.changeValue} />
-                <button onClick={this.setValue}>SEND</button>
-
+               <input type="text" name="todotext" value={this.state.todotext} onChange={this.onChangeValue}/>
+               <button onClick={this.addValue}>ADD VALUE</button>
 
             </div>
         )
-    }
 
+    }
 
 }
 
 
-export default ADDTODO;
+
+const mapDispatchToProps=(dispatch)=>{
+    return bindActionCreators({
+        addtodo
+    },dispatch)
+}
+
+
+
+
+export default connect(null,mapDispatchToProps)(ADDTODO)
 
 
 
