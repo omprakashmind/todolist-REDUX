@@ -3,7 +3,7 @@ import {ADD_TODO,TOGGLE_TODO,DELETE_TODO,SET_VISIBILITY_FILTER} from './actionty
 
 let nexttodo=0
 
-export const addtodo=text=>({
+export const addTodo=text=>({
     type:'ADD_TODO',
     id:nexttodo++,
     text:text

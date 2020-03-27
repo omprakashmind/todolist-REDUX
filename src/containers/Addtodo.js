@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {addtodo} from '../actions/index'
+import {addTodo} from '../actions/index'
 import {bindActionCreators} from 'redux'
 
 
@@ -22,7 +22,7 @@ class ADDTODO extends React.Component{
       }
 
       addValue=(event)=>{
-          this.props.addtodo(this.state.todotext)
+          this.props.addTodo(this.state.todotext)
           this.setState({
               todotext:''
           })
@@ -50,7 +50,7 @@ class ADDTODO extends React.Component{
 
 const mapDispatchToProps=(dispatch)=>{
     return bindActionCreators({
-        addtodo
+        addTodo
     },dispatch)
 }
 

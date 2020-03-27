@@ -20,21 +20,25 @@ class Table extends React.Component{
                                   
                                        
                                         {this.props.todos.map(todo=>(
+                                        <tr>
+                                            
                                             <th key={todo.id}>
                                                 
                                                    {todo.text}
                                           
-                                                    <button onClick={()=>this.props.deleteTodo(todo.id)}>D</button>
+                                                    <button onClick={()=>this.props.deleteTodo(todo.id)}>X</button>
 
-                                                    <input type="checkbox" checked={()=>this.props.toggleTodo(todo.id)}  />
-            
+                                                    <input type="checkbox"  onClick={()=>this.props.toggleTodo(todo.id)}/>
+                                                                
                                             </th>
+                                        </tr>
+                                            
                                            
                                         ))}
                                          
                                      </tr>
                                 </table>
-                       ):''}
+                       ):' Nothing in the todolist add some'}
                                     
 
             </div>
@@ -73,11 +77,6 @@ const mapDispatchtoProps=dispatch=>{
         dispatch
     )
 }
-
-
-
-
-
 
 
 export default connect(mapStateToProps,mapDispatchtoProps)(Table);
