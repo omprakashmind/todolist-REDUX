@@ -13,6 +13,12 @@ class Table extends React.Component{
 
 
             <div>
+                <ol>
+                    <li className={(this.props.visibilityFilter===SHOW_ALL?'active':'')} onClick={()=>this.props.setVisibilityFilter(SHOW_ALL)}>ALL </li>
+                    <li className={(this.props.visibilityFilter===SHOW_COMPLETED?'active' :'')} onClick={()=>this.props.setVisibilityFilter(SHOW_COMPLETED)}>COMPLETED </li>
+                    <li className={(this.props.visibilityFilter===SHOW_ACTIVE?'active':'') } onClick={()=>this.props.setVisibilityFilter(SHOW_ACTIVE)}>ACTIVE</li>
+                </ol>
+
                        {this.props.todos.length!==0?( 
                                 <table>
                                     <tr>
@@ -22,15 +28,34 @@ class Table extends React.Component{
                                         {this.props.todos.map(todo=>(
                                         <tr>
                                             
-                                            <th key={todo.id}>
-                                                
-                                                   {todo.text}
-                                          
-                                                    <button onClick={()=>this.props.deleteTodo(todo.id)}>X</button>
+                                            <tr key={todo.id}>
+                                                <td style={{textDecoration:todo.completed?'line-through':'none'}}>
+                                                    {todo.text}{todo.completed===true?'(completed':" "}
 
-                                                    <input type="checkbox"  onClick={()=>this.props.toggleTodo(todo.id)}/>
+                                                </td>
+                                                <td>
+                                            <span
+                                            
+                                            onClick={() => this.props.deleteTodo(todo.id)}
+                                            style={{
+                                                color: "white",
+                                                fontSize: "20pt",
+                                                marginRight: "20px"
+                                            }}
+                                            />
+                                            <span
+                                            className="fas fa-check-circle"
+                                            onClick={() => this.props.toggleTodo(todo.id)}
+                                            style={{ color: "white", fontSize: "20pt" }}
+                                            />
+                                        </td>
+                                                <td>
+
+                                                </td>
+                                                
+                                                  
                                                                 
-                                            </th>
+                                            </tr>
                                         </tr>
                                             
                                            
