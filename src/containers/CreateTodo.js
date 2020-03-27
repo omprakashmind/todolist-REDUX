@@ -15,16 +15,24 @@ class Table extends React.Component{
             <div>
                        {this.props.todos.length!==0?( 
                                 <table>
+                                    <tr>
 
-                                    <tbody>
+                                  
+                                       
                                         {this.props.todos.map(todo=>(
-                                            <tr>
-                                                <td>
-                                                    {todo.text}
-                                                </td>
-                                            </tr>
+                                            <th key={todo.id}>
+                                                
+                                                   {todo.text}
+                                          
+                                                    <button onClick={()=>this.props.deleteTodo(todo.id)}>D</button>
+
+                                                    <input type="checkbox" checked={()=>this.props.toggleTodo(todo.id)}  />
+            
+                                            </th>
+                                           
                                         ))}
-                                    </tbody>
+                                         
+                                     </tr>
                                 </table>
                        ):''}
                                     
@@ -45,7 +53,7 @@ const getVisibleTodos=(todos,filter)=>{
         case SHOW_ACTIVE:
             return todos.filter(t=>!t.completed);
         default:
-                throw new Error("Wnknown Filter"+filter)        
+                throw new Error("Wnknown Filter"+filter)                                   
     }
 }
 
